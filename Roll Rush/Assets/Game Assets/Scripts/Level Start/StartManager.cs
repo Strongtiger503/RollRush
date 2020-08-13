@@ -5,6 +5,11 @@ using UnityEngine;
 public class StartManager : MonoBehaviour
 {
 
+    //Requires RestartOnKeyDownModified Script   
+    //as it Keeps track of Number of Restarts
+
+
+
     #region Variables
 
     [SerializeField]
@@ -16,9 +21,8 @@ public class StartManager : MonoBehaviour
      
     void Update()
     {
-
-       
-        if (RestartOnKeyDownModified.ReloadNumber <= 0)
+      
+        if (RestartOnKeyDownModified.RestartNumber <= 0)
         {
 
             CountDown.SetActive(true);
@@ -31,7 +35,6 @@ public class StartManager : MonoBehaviour
 
         }
          
-
     }
 
     #endregion

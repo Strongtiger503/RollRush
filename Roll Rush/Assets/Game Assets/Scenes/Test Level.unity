@@ -1065,7 +1065,7 @@ Transform:
   - {fileID: 930482152}
   - {fileID: 330071424148475627}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &458682941
 GameObject:
@@ -1441,8 +1441,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: -493.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1061333422}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &501075740
 MonoBehaviour:
@@ -1516,7 +1516,7 @@ MonoBehaviour:
   TimeBeforePanelActivation: 0
   GameOverPanel: {fileID: 38658234}
   TimeBeforeGameOverPopupActivation: 0.4
-  TimeBeforeBeingAbleToRestart: 0.9
+  TimeBeforeBeingAbleToRestart: 0.7
 --- !u!95 &501075744
 Animator:
   serializedVersion: 3
@@ -2834,10 +2834,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 501075739}
   - {fileID: 1605854981}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1116421581 stripped
 Transform:
@@ -3724,7 +3723,7 @@ Transform:
   - {fileID: 1470494244}
   - {fileID: 1470303309}
   m_Father: {fileID: 1061333422}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1660695192
 GameObject:

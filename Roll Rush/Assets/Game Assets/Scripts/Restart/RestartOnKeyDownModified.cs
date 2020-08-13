@@ -8,7 +8,9 @@ public class RestartOnKeyDownModified : MonoBehaviour
 
     //Requires SRestart Script to be on a gameObject in the scene
 
-    
+    //It Restart when a Button is pressed and keeps track of the number of Restarts
+
+    //Required for StartManager Script
 
 
     #region Variables
@@ -22,7 +24,7 @@ public class RestartOnKeyDownModified : MonoBehaviour
 
 
     //How many times the scene hs been reloaded
-    public static int ReloadNumber = 0;
+    public static int RestartNumber = 0;
 
     #endregion
 
@@ -48,7 +50,7 @@ public class RestartOnKeyDownModified : MonoBehaviour
         {
 
            //it increase the Reload Number
-            ReloadNumber++;
+            RestartNumber++;
 
            //Restart
             Reset.Restart(TimeBeforeRestart);
