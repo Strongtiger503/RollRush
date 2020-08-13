@@ -26,15 +26,17 @@ public class StartManager : MonoBehaviour
         {
 
             CountDown.SetActive(true);
+            gameObject.SetActive(false);
 
         }
         else
         {
 
             CountDown.SetActive(false);
+            gameObject.SetActive(false);
 
         }
-         
+
     }
 
     #endregion

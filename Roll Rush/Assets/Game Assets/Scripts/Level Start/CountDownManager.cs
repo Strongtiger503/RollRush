@@ -42,8 +42,9 @@ public class CountDownManager : MonoBehaviour
 
         //Do Counter
 
-        //Enabling and disabling " 3 "
         yield return new WaitForSecondsRealtime(1f);
+
+        //Enabling and disabling " 3 "
         three.SetActive(true);
         yield return new WaitForSecondsRealtime(1f);
         three.SetActive(false);
@@ -66,6 +67,11 @@ public class CountDownManager : MonoBehaviour
 
         //unpause game
         Time.timeScale = 1;
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        //Destroy Object
+        Destroy(gameObject);
 
     }
 
