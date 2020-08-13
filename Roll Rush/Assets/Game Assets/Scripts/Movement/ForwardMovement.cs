@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ForwardMovement : MonoBehaviour
 {
+
     #region Variables
 
+    
     Rigidbody rb;
 
 
@@ -17,30 +19,17 @@ public class ForwardMovement : MonoBehaviour
 
     #endregion
 
+
     #region Main
 
 
     //One time Setters
-    private void Awake()
+    private void Start()
     {
 
         rb = GetComponent<Rigidbody>();
 
     }
-
-
-
-    //For Debugging
-
-    private void Update()
-    {
-
-        //Log speed
-        //Debug.Log(rb.velocity.z);
-
-    }
-
-
 
 
     //Forward Movement (Auto)
@@ -56,6 +45,18 @@ public class ForwardMovement : MonoBehaviour
 
     }
 
+
+    #endregion
+
+
+    #region For Debugging
+
+
+    private void Update()
+    {
+        //Log speed
+        //Debug.Log(rb.velocity.z);
+    }
 
 
     #endregion

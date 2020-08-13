@@ -87,12 +87,14 @@ public class HorizontalMovement : MonoBehaviour
 
     #region One time Setters
 
-    private void Awake()
+
+    private void Start()
     {
 
         rb = GetComponent<Rigidbody>();
 
     }
+
 
     #endregion
 
@@ -113,14 +115,14 @@ public class HorizontalMovement : MonoBehaviour
 
         //checking Input
 
-        if (Input.GetKeyDown(RightKey) && !MoveMidToLeft && !MoveLeftToMid && !MoveMidToRight && transform.position.x < PointLeftCheckArea.position.x)
+        if (Input.GetKeyDown(RightKey) && transform.position.x < PointLeftCheckArea.position.x && !MoveMidToLeft && !MoveLeftToMid && !MoveMidToRight )
         {
 
             MoveLeftToMid = true;
             animator.SetBool("MoveRight" , true);
 
         }
-        else if (Input.GetKeyDown(RightKey) && !MoveMidToLeft && !MoveLeftToMid && !MoveRightToMid && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x))
+        else if (Input.GetKeyDown(RightKey) && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x) && !MoveMidToLeft && !MoveLeftToMid && !MoveRightToMid )
         {
 
             MoveMidToRight = true;
@@ -128,14 +130,14 @@ public class HorizontalMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(LeftKey) && !MoveMidToRight && !MoveRightToMid && !MoveMidToLeft && transform.position.x > PointRightCheckArea.position.x)
+        if (Input.GetKeyDown(LeftKey) && transform.position.x > PointRightCheckArea.position.x && !MoveMidToRight && !MoveRightToMid && !MoveMidToLeft)
         {
 
             MoveRightToMid = true;
             animator.SetBool("MoveLeft", true);
 
         }
-        else if (Input.GetKeyDown(LeftKey) && !MoveMidToRight && !MoveRightToMid && !MoveLeftToMid && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x))
+        else if (Input.GetKeyDown(LeftKey) && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x) && !MoveMidToRight && !MoveRightToMid && !MoveLeftToMid)
         {
 
             MoveMidToLeft = true;
@@ -145,7 +147,6 @@ public class HorizontalMovement : MonoBehaviour
 
 
     }
-
 
 
     #endregion
@@ -163,15 +164,11 @@ public class HorizontalMovement : MonoBehaviour
         if (MoveLeftToMid)
         {
 
-
             //Movement
-
-            transform.position = Vector3.MoveTowards(transform.position, PointMid, HorizontalForce * Time.deltaTime);
-
+            MoveToPoint(PointMid);
 
 
             //set condition to false after action is done
-
             if (transform.position.x == PointMid.x)
             {
 
@@ -186,24 +183,18 @@ public class HorizontalMovement : MonoBehaviour
         if (MoveMidToRight)
         {
 
-
             //Movement
-
-            transform.position = Vector3.MoveTowards(transform.position, PointRight, HorizontalForce * Time.deltaTime);
-
+            MoveToPoint(PointRight);
 
 
             //set condition to false after action is done
-
             if (transform.position.x >= PointRight.x)
             {
 
                 MoveMidToRight = false;
                 animator.SetBool("MoveRight", false);
 
-
             }
-
 
         }
 
@@ -217,22 +208,17 @@ public class HorizontalMovement : MonoBehaviour
 
 
             //Movement
-
-            transform.position = Vector3.MoveTowards(transform.position, PointMid, HorizontalForce * Time.deltaTime);
-
+            MoveToPoint(PointMid);
 
 
             //set condition to false after action is done
-
             if (transform.position.x == PointMid.x)
             {
 
                 MoveRightToMid = false;
                 animator.SetBool("MoveLeft", false);
 
-
             }
-
 
         }
 
@@ -243,13 +229,10 @@ public class HorizontalMovement : MonoBehaviour
 
 
             //Movement
-
-            transform.position = Vector3.MoveTowards(transform.position, PointLeft, HorizontalForce * Time.deltaTime);
-
+            MoveToPoint(PointLeft);
 
 
             //set condition to false after action is done
-
             if (transform.position.x <= PointLeft.x)
             {
 
@@ -258,11 +241,25 @@ public class HorizontalMovement : MonoBehaviour
 
             }
 
-
         }
+        
 
     }
 
+
+    #endregion
+
+
+    #region Functions
+
+    private void MoveToPoint(Vector3 Point)
+    {
+
+        //Movement
+
+        transform.position = Vector3.MoveTowards(transform.position, Point, HorizontalForce * Time.deltaTime);
+
+    }
 
     #endregion
 
