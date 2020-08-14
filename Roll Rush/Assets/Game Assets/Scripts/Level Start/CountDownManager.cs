@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CountDownManager : MonoBehaviour
 {
-  
+
+    //could be Optimized but not worth it
+
+
     #region Variables
 
     [SerializeField]
@@ -68,7 +71,9 @@ public class CountDownManager : MonoBehaviour
         //unpause game
         Time.timeScale = 1;
 
+
         yield return new WaitForSecondsRealtime(1f);
+
 
         //Destroy Object
         Destroy(gameObject);

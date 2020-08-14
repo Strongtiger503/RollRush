@@ -5,6 +5,11 @@ using UnityEngine.Animations;
 public class GameRestartManager : MonoBehaviour
 {
 
+    //Script On Player
+
+
+
+
     #region Variables
 
     [SerializeField]
@@ -22,11 +27,20 @@ public class GameRestartManager : MonoBehaviour
 
     private RestartOnKeyDownModified RestartOnKeyDownScript;
     [SerializeField]
-    float TimeBeforeBeingAbleToRestart = 0.7f;
+    float TimeBeforeBeingAbleToRestart = 0.5f;
 
     #endregion
 
     #region Main
+
+    //One Time Setter
+    void Start()
+    {
+
+        RestartOnKeyDownScript = FindObjectOfType<RestartOnKeyDownModified>();
+
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -83,7 +97,6 @@ public class GameRestartManager : MonoBehaviour
         //if Button is pressed Restart and
         //Enabling the script Responsable for that
         yield return new WaitForSeconds(TimeBeforeBeingAbleToRestart);
-        RestartOnKeyDownScript = FindObjectOfType<RestartOnKeyDownModified>();
         RestartOnKeyDownScript.enabled = true;
 
     }

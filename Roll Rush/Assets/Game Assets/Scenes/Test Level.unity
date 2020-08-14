@@ -1516,7 +1516,7 @@ MonoBehaviour:
   TimeBeforePanelActivation: 0
   GameOverPanel: {fileID: 38658234}
   TimeBeforeGameOverPopupActivation: 0.4
-  TimeBeforeBeingAbleToRestart: 0.7
+  TimeBeforeBeingAbleToRestart: 0.5
 --- !u!95 &501075744
 Animator:
   serializedVersion: 3

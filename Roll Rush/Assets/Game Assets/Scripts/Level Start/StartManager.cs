@@ -26,14 +26,15 @@ public class StartManager : MonoBehaviour
         {
 
             CountDown.SetActive(true);
-            gameObject.SetActive(false);
+            this.enabled = false;
 
         }
         else
         {
 
             CountDown.SetActive(false);
-            gameObject.SetActive(false);
+            Destroy(CountDown);
+            this.enabled = false;
 
         }
 
