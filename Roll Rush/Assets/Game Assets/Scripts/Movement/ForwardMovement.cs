@@ -48,17 +48,4 @@ public class ForwardMovement : MonoBehaviour
 
     #endregion
 
-
-    #region For Debugging
-
-
-    private void Update()
-    {
-        //Log speed
-        //Debug.Log(rb.velocity.z);
-    }
-
-
-    #endregion
-
 }
