@@ -1517,7 +1517,7 @@ MonoBehaviour:
   TimeBeforePanelActivation: 0
   GameOverPanel: {fileID: 38658234}
   TimeBeforeGameOverPopupActivation: 0.4
-  TimeBeforeBeingAbleToRestart: 0.5
+  TimeBeforeBeingAbleToInput: 0.5
 --- !u!95 &501075744
 Animator:
   serializedVersion: 3
@@ -16854,7 +16854,9 @@ GameObject:
   - component: {fileID: 371778777828752824}
   - component: {fileID: 3154682779474224323}
   - component: {fileID: 3154682779474224322}
+  - component: {fileID: 3154682779474224325}
   - component: {fileID: 3154682779474224321}
+  - component: {fileID: 3154682779474224324}
   m_Layer: 9
   m_Name: Game Manger
   m_TagString: Untagged
@@ -16876,7 +16878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResetButton: 114
   TimeBeforeRestart: 0
-  Reset: {fileID: 3154682779474224322}
+  Reset: {fileID: 0}
 --- !u!114 &3154682779474224322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16902,6 +16904,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountDown: {fileID: 2099232130}
+--- !u!114 &3154682779474224324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154682779474224320}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb34a31828356e04eb52f52de790736d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExitButton: 113
+  TimeBeforeExit: 0
+  Quit: {fileID: 3154682779474224325}
+--- !u!114 &3154682779474224325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154682779474224320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440eda5e450a05c49bd5c6e9e461f281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu: Main Menu
 --- !u!4 &3154682779474224334
 Transform:
   m_ObjectHideFlags: 0

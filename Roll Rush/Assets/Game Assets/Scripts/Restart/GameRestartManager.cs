@@ -26,8 +26,9 @@ public class GameRestartManager : MonoBehaviour
     float TimeBeforeGameOverPopupActivation = 0.4f;
 
     private RestartOnKeyDownModified RestartOnKeyDownScript;
+    private ExitOnKeyDown ExitOnKeyDownScript;
     [SerializeField]
-    float TimeBeforeBeingAbleToRestart = 0.5f;
+    float TimeBeforeBeingAbleToInput = 0.5f;
 
     #endregion
 
@@ -38,6 +39,7 @@ public class GameRestartManager : MonoBehaviour
     {
 
         RestartOnKeyDownScript = FindObjectOfType<RestartOnKeyDownModified>();
+        ExitOnKeyDownScript = FindObjectOfType<ExitOnKeyDown>();
 
     }
 
@@ -96,8 +98,9 @@ public class GameRestartManager : MonoBehaviour
         
         //if Button is pressed Restart and
         //Enabling the script Responsable for that
-        yield return new WaitForSeconds(TimeBeforeBeingAbleToRestart);
+        yield return new WaitForSeconds(TimeBeforeBeingAbleToInput);
         RestartOnKeyDownScript.enabled = true;
+        ExitOnKeyDownScript.enabled = true;
 
     }
 
