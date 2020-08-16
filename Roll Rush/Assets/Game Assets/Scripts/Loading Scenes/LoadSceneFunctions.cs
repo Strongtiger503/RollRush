@@ -6,13 +6,6 @@ using UnityEngine.SceneManagement;
 public class LoadSceneFunctions : MonoBehaviour
 {
 
-    #region Variables
-
-    [SerializeField]
-    string SceneToLoad;
-
-    #endregion
-
     #region Functions
 
     public void LoadNextScene(float TimeBeforeLoad)
@@ -29,11 +22,17 @@ public class LoadSceneFunctions : MonoBehaviour
 
     }
 
-
-    public void LoadScene(float TimeBeforeLoad)
+    public void LoadScene(string SceneToLoad)
     {
 
-        Invoke("LoadSceneFunction", TimeBeforeLoad);
+        SceneManager.LoadScene(SceneToLoad);
+
+    }
+
+    public void LoadSceneAfter(string SceneToLoad, float TimeBeforeLoad)
+    {
+
+        StartCoroutine(LoadSceneFunction(SceneToLoad, TimeBeforeLoad));
 
     }
 
@@ -52,9 +51,9 @@ public class LoadSceneFunctions : MonoBehaviour
     }
 
 
-    private void LoadSceneFunction()
+    private IEnumerator LoadSceneFunction(string SceneToLoad, float TimeBeforeLoad)
     {
-
+        yield return new WaitForSeconds(TimeBeforeLoad);
         SceneManager.LoadScene(SceneToLoad);
 
     }

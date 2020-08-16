@@ -4993,12 +4993,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTag: Player
   SlowMoFactor: 0.05
-  SlowMoLength: 2
-  TimeBeforeConfettiManagerActivation: 2.5
+  SlowMoLength: 1.5
+  TimeBeforeConfettiManagerActivation: 2
   TimeBeforeNextConfettiActivation: 1
   Confetti1: {fileID: 330071425525061388}
   Confetti2: {fileID: 330071424613727059}
-  TimeBeforePanelActiviation: 3.2
+  TimeBeforePanelActiviation: 2.9
   LevelCompletePanel: {fileID: 887366519}
 --- !u!1 &330071423717851762
 GameObject:

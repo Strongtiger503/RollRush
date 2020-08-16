@@ -45,26 +45,26 @@ public class CountDownManager : MonoBehaviour
 
         //Do Counter
 
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         //Enabling and disabling " 3 "
         three.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         three.SetActive(false);
 
         //Enabling and disabling " 2 "
         two.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         two.SetActive(false);
 
         //Enabling and disabling " 1 "
         one.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         one.SetActive(false);
 
         //Enabling and disabling " Go "
         go.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.2f);
         go.SetActive(false);
 
 
