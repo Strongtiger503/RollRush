@@ -9,13 +9,13 @@ public class QuitExitFunctions : MonoBehaviour
     #region Variables
 
     [SerializeField]
-    string MainMenu;
+    string MainMenuOrOther;
 
     #endregion
 
     #region Functions
 
-    #region Exit 
+    #region Exit Functions
 
     //Exit Game after a certain time which is set as a prameter
 
@@ -29,7 +29,7 @@ public class QuitExitFunctions : MonoBehaviour
     private void ExitFunction()
     {
 
-        SceneManager.LoadScene(MainMenu);
+        SceneManager.LoadScene(MainMenuOrOther);
 
     }
 
