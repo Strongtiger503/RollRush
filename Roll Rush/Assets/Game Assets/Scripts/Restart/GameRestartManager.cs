@@ -5,6 +5,11 @@ using UnityEngine.Animations;
 public class GameRestartManager : MonoBehaviour
 {
 
+    //Script On Player
+
+
+
+
     #region Variables
 
     [SerializeField]
@@ -13,20 +18,31 @@ public class GameRestartManager : MonoBehaviour
     [SerializeField]
     GameObject Panel;
     [SerializeField]
-    float TimeBeforePanelActivation = 0.25f;
+    float TimeBeforePanelActivation = 0;
 
     [SerializeField]
     GameObject GameOverPanel;
     [SerializeField]
-    float TimeBeforeGameOverPopupActivation = 0.5f;
+    float TimeBeforeGameOverPopupActivation = 0.4f;
 
     private RestartOnKeyDownModified RestartOnKeyDownScript;
+    private ExitOnKeyDown ExitOnKeyDownScript;
     [SerializeField]
-    float TimeBeforeBeingAbleToRestart = 0.8f;
+    float TimeBeforeBeingAbleToInput = 0.5f;
 
     #endregion
 
     #region Main
+
+    //One Time Setter
+    void Start()
+    {
+
+        RestartOnKeyDownScript = FindObjectOfType<RestartOnKeyDownModified>();
+        ExitOnKeyDownScript = FindObjectOfType<ExitOnKeyDown>();
+
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -46,23 +62,19 @@ public class GameRestartManager : MonoBehaviour
 
             #region Stop Player
 
-            StopPlayer();
+            GetComponent<HorizontalMovement>().enabled = false;
+            GetComponent<ForwardMovement>().enabled = false;
 
             #endregion
 
-            #region GameOver Screen 
+            #region GameOver Screen Sequence
 
-            //Fade in the Red Panel and Game Over Panel
-            Invoke("PanelFadein", TimeBeforePanelActivation);
-            Invoke("GameOverPopup", TimeBeforeGameOverPopupActivation);
-
-            //if Button is pressed Restart and
-            //Enabling the script Responsable for that
-            Invoke("EnableScript", TimeBeforeBeingAbleToRestart);
-
-            #endregion
+            StartCoroutine(ActivateGamOverScreenSequence());
 
             //if another button is pressed quit
+
+            #endregion
+
 
         }
 
@@ -73,34 +85,22 @@ public class GameRestartManager : MonoBehaviour
      
     #region Functions
 
-    private void StopPlayer()
+    IEnumerator ActivateGamOverScreenSequence()
     {
 
-        GetComponent<HorizontalMovement>().enabled = false;
-        GetComponent<ForwardMovement>().enabled = false;
-
-    }
-
-    private void PanelFadein()
-    {
-
+        //Wait then Fade in the Red Panel
+        yield return new WaitForSeconds(TimeBeforePanelActivation);
         Panel.SetActive(true);
-
-
-    }
-
-    private void GameOverPopup()
-    {
-
+        
+        //Wait then activate Game Over Pop up
+        yield return new WaitForSeconds(TimeBeforeGameOverPopupActivation);
         GameOverPanel.SetActive(true);
-
-    }
-
-    private void EnableScript()
-    {
-       
-        RestartOnKeyDownScript = FindObjectOfType<RestartOnKeyDownModified>();
+        
+        //if Button is pressed Restart and
+        //Enabling the script Responsable for that
+        yield return new WaitForSeconds(TimeBeforeBeingAbleToInput);
         RestartOnKeyDownScript.enabled = true;
+        ExitOnKeyDownScript.enabled = true;
 
     }
 

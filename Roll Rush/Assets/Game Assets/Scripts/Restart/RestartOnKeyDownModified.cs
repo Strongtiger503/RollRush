@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class RestartOnKeyDownModified : MonoBehaviour
 {
 
-    //Requires SRestart Script to be on a gameObject in the scene
+    //Requires RestartFunctions Script to be on a gameObject in the scene
 
-    
+    //It Restart when a Button is pressed and keeps track of the number of Restarts
+
+    //Required for StartManager Script
 
 
     #region Variables
@@ -18,11 +20,11 @@ public class RestartOnKeyDownModified : MonoBehaviour
     [SerializeField]
     float TimeBeforeRestart = 0;
 
-    public SRestart Reset;
+    public RestartFunctions Reset;
 
 
     //How many times the scene hs been reloaded
-    public static int ReloadNumber = 0;
+    public static int RestartNumber = 0;
 
     #endregion
 
@@ -33,7 +35,7 @@ public class RestartOnKeyDownModified : MonoBehaviour
     private void Start()
     {
 
-        Reset = FindObjectOfType<SRestart>();
+        Reset = FindObjectOfType<RestartFunctions>();
 
 
     }
@@ -48,7 +50,7 @@ public class RestartOnKeyDownModified : MonoBehaviour
         {
 
            //it increase the Reload Number
-            ReloadNumber++;
+            RestartNumber++;
 
            //Restart
             Reset.Restart(TimeBeforeRestart);

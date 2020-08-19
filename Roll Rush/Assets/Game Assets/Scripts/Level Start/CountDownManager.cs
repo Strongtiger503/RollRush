@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CountDownManager : MonoBehaviour
 {
-  
+
+    //could be Optimized but not worth it
+
+
     #region Variables
 
     [SerializeField]
@@ -42,30 +45,38 @@ public class CountDownManager : MonoBehaviour
 
         //Do Counter
 
+        yield return new WaitForSecondsRealtime(0.5f);
+
         //Enabling and disabling " 3 "
-        yield return new WaitForSecondsRealtime(1f);
         three.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         three.SetActive(false);
 
         //Enabling and disabling " 2 "
         two.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         two.SetActive(false);
 
         //Enabling and disabling " 1 "
         one.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.1f);
         one.SetActive(false);
 
         //Enabling and disabling " Go "
         go.SetActive(true);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.2f);
         go.SetActive(false);
 
 
         //unpause game
         Time.timeScale = 1;
+
+
+        yield return new WaitForSecondsRealtime(1f);
+
+
+        //Destroy Object
+        Destroy(gameObject);
 
     }
 

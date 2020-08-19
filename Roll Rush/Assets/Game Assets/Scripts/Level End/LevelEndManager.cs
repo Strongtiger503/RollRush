@@ -5,6 +5,10 @@ using UnityEngine;
 public class LevelEndManager : MonoBehaviour
 {
 
+    //Requires Player Movement Script for Level Complete Sequence
+
+
+
     #region Variables
 
     [SerializeField]
@@ -15,16 +19,15 @@ public class LevelEndManager : MonoBehaviour
     [SerializeField]
     float SlowMoLength = 2f;
 
+
     [SerializeField]
     float TimeBeforeConfettiManagerActivation = 1f;
     [SerializeField]
     float TimeBeforeNextConfettiActivation = 1f;
-
     [SerializeField]
     GameObject Confetti1;
     [SerializeField]
     GameObject Confetti2;
-
 
 
     [SerializeField]
@@ -32,6 +35,7 @@ public class LevelEndManager : MonoBehaviour
     [SerializeField]
     GameObject LevelCompletePanel;
 
+    //Player Forwrd Movement Script
     private ForwardMovement MoveForward;
 
 
@@ -56,19 +60,12 @@ public class LevelEndManager : MonoBehaviour
         if (other.CompareTag(PlayerTag))
         {
 
-            StartCoroutine(FinishManager());
+            StartCoroutine(ActivateLevelCompleteSequence());
 
         }
 
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
 
     //do sound 
 
@@ -128,14 +125,14 @@ public class LevelEndManager : MonoBehaviour
 
     }
 
-    IEnumerator FinishManager()
+    IEnumerator ActivateLevelCompleteSequence()
     {
 
 
         //Make Camera stop following the Player
         FindObjectOfType<FollowObject>().enabled = false;
 
-        //activite slow Mo
+        //activite slow Mo and Change Player speed Back to Normalish
         StartCoroutine(SlowMoGame());
 
         yield return new WaitForSecondsRealtime(TimeBeforeConfettiManagerActivation);
