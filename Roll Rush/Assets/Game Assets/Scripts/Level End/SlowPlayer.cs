@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SlowPlayer : MonoBehaviour
 {
+
+    //Requires Player Forward Movement Script
+
+
+
     #region Variables
 
     [SerializeField]
