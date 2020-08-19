@@ -36,6 +36,7 @@ public class LoadSceneFunctions : MonoBehaviour
 
     }
 
+
     private void LoadNextSceneFunction()
     {
 

@@ -28,7 +28,6 @@ public class ExitOnKeyDown : MonoBehaviour
 
         Quit = FindObjectOfType<QuitExitFunctions>();
 
-
     }
 
     // Update is called once per frame
