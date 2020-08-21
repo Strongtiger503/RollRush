@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartManager : MonoBehaviour
 {
 
-    //Requires RestartOnKeyDownModified Script   
+    //Requires RestartFunctions Script   
     //as it Keeps track of Number of Restarts
 
 
@@ -32,7 +32,7 @@ public class StartManager : MonoBehaviour
     void Update()
     {
       
-        if (RestartOnKeyDownModified.RestartNumber <= 0)
+        if (RestartFunctions.RestartNumber <= 0)
         {
 
             CountDown.SetActive(true);
