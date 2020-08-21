@@ -31,7 +31,13 @@ public class LevelEndManager : MonoBehaviour
 
 
     [SerializeField]
-    float TimeBeforePanelActiviation = 0.6f;
+    float TimeBeforePanelActiviation = 0.8f;
+
+    [SerializeField]
+    float TimeBeforeBackPanelActiviation = 0.6f;
+
+    [SerializeField]
+    GameObject LevelCompleteBackPanel;
     [SerializeField]
     GameObject LevelCompletePanel;
 
@@ -44,7 +50,7 @@ public class LevelEndManager : MonoBehaviour
 
     #region Main
 
-
+    
     void Start()
     {
 
@@ -143,6 +149,10 @@ public class LevelEndManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(TimeBeforePanelActiviation);
 
         //Enable Level Complete pop up
+        LevelCompleteBackPanel.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(TimeBeforeBackPanelActiviation);
+
         LevelCompletePanel.SetActive(true);
 
     }

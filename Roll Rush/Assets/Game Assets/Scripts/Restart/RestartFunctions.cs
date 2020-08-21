@@ -6,17 +6,44 @@ using UnityEngine.SceneManagement;
 public class RestartFunctions : MonoBehaviour
 {
 
+    //restarts scene after a certain time which is set as a prameter
+
+    //It keeps track of the number of Restarts
+
+    //So it is required for StartManager Script
+
+
+
+
     #region Functions
 
-    //restarts scene after a certain time which is set as a prameter
-    
+
+    //How many times the scene hs been reloaded
+    public static int RestartNumber = 0;
+
 
     public void Restart(float TimeBeforeReset)
     {
 
+        //it increase the Reload Number
+        RestartNumber++;
+
         Invoke("RestartFunction", TimeBeforeReset);
 
     }
+
+
+    public void RestartCompletlely(float TimeBeforeReset)
+    {
+
+        //it increase the Reload Number
+        RestartNumber = 0;
+
+        Invoke("RestartFunction", TimeBeforeReset);
+
+    }
+
+
 
     //the function used in the invoke method in the previous method
 

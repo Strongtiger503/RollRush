@@ -19,7 +19,6 @@ public class PauseGameOnKeyDown : MonoBehaviour
 
     #endregion
 
-
     #region Main
 
     void Update()
@@ -27,27 +26,13 @@ public class PauseGameOnKeyDown : MonoBehaviour
         if (Input.GetKeyDown(PauseKey) && isPaused == false)
         {
 
-            //pause game
-            Time.timeScale = 0;
-
-            //activate pause menu
-            StartCoroutine(PauseSequence());
-
-            isPaused = true;
+            Pause();
 
         }
         else if (Input.GetKeyDown(PauseKey) && isPaused == true)
         {
 
-            //unactivate pause menu
-            StopCoroutine(PauseSequence());
-            PausePanel.SetActive(false);
-            PauseMenu.SetActive(false);
-
-            //unpause game
-            Time.timeScale = 1;
-
-            isPaused = false;
+            UnPause();
 
         }
     }
@@ -65,8 +50,35 @@ public class PauseGameOnKeyDown : MonoBehaviour
 
     }
 
+    public void Pause()
+    {
+
+        //pause game
+        Time.timeScale = 0;
+
+        //activate pause menu
+        StartCoroutine(PauseSequence());
+
+        isPaused = true;
+
+    }
+
+    public void UnPause()
+    {
+
+        //unactivate pause menu
+        StopCoroutine(PauseSequence());
+        PausePanel.SetActive(false);
+        PauseMenu.SetActive(false);
+
+        //unpause game
+        Time.timeScale = 1;
+
+        isPaused = false;
+
+    }
+
+
     #endregion
-
-
 
 }
