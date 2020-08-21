@@ -30,6 +30,8 @@ public class GameRestartManager : MonoBehaviour
     [SerializeField]
     float TimeBeforeBeingAbleToInput = 0.5f;
 
+    private PauseGameOnKeyDown Pause;
+
     #endregion
 
     #region Main
@@ -40,6 +42,8 @@ public class GameRestartManager : MonoBehaviour
 
         RestartOnKeyDownScript = FindObjectOfType<RestartOnKeyDownModified>();
         ExitOnKeyDownScript = FindObjectOfType<ExitOnKeyDown>();
+        
+        Pause = FindObjectOfType<PauseGameOnKeyDown>();
 
     }
 
@@ -72,6 +76,12 @@ public class GameRestartManager : MonoBehaviour
             StartCoroutine(ActivateGamOverScreenSequence());
 
             //if another button is pressed quit
+
+            #endregion
+
+            #region Disable PauseFunction
+
+            Pause.enabled = false;
 
             #endregion
 

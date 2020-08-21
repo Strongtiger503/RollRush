@@ -14,11 +14,21 @@ public class StartManager : MonoBehaviour
 
     [SerializeField]
     private GameObject CountDown;
+    
+    private PauseGameOnKeyDown Pause;
 
     #endregion
 
     #region Main
-     
+
+    void Start()
+    {
+
+        Pause = FindObjectOfType<PauseGameOnKeyDown>();
+
+    }
+
+
     void Update()
     {
       
@@ -26,13 +36,20 @@ public class StartManager : MonoBehaviour
         {
 
             CountDown.SetActive(true);
-            this.enabled = false;
+            if (CountDownManager.CountDownDone == true)
+            {
+
+                Pause.enabled = true;
+                this.enabled = false;
+
+            }
 
         }
         else
         {
 
             CountDown.SetActive(false);
+            Pause.enabled = true;
             Destroy(CountDown);
             this.enabled = false;
 

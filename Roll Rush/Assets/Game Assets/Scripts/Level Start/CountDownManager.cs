@@ -19,6 +19,8 @@ public class CountDownManager : MonoBehaviour
     [SerializeField]
     private GameObject go;
 
+    public static bool CountDownDone = false;
+
     #endregion
 
     #region Main
@@ -26,7 +28,9 @@ public class CountDownManager : MonoBehaviour
 
     void OnEnable()
     {
-        
+
+        CountDownDone = false;
+
         //Calling the Courntine
         StartCoroutine(CountDown());
 
@@ -71,12 +75,12 @@ public class CountDownManager : MonoBehaviour
         //unpause game
         Time.timeScale = 1;
 
+        CountDownDone = true;
 
         yield return new WaitForSecondsRealtime(1f);
 
-
-        //Destroy Object
-        Destroy(gameObject);
+        //Disable Object
+        gameObject.SetActive(false);
 
     }
 
