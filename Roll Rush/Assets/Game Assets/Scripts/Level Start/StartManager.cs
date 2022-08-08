@@ -19,9 +19,16 @@ public class StartManager : MonoBehaviour
     private ForwardMovement MoveForward;
     private HorizontalMovement MoveHorizontal;
 
+    GameRestartManager Gm;
+
+    MusicManager Mm;
+
+    LevelEndManager Lm;
+
     #endregion
 
     #region Main
+
 
     void Start()
     {
@@ -29,7 +36,9 @@ public class StartManager : MonoBehaviour
         Pause = FindObjectOfType<PauseGameOnKeyDown>();
         MoveForward = FindObjectOfType<ForwardMovement>();
         MoveHorizontal = FindObjectOfType<HorizontalMovement>();
-
+        Gm = FindObjectOfType<GameRestartManager>();
+        Mm = FindObjectOfType<MusicManager>();
+        Lm = FindObjectOfType<LevelEndManager>();
     }
 
 
@@ -37,7 +46,7 @@ public class StartManager : MonoBehaviour
     {
 
         ///if number of restarts equals 0  do countdown if not don't
-      
+
         if (RestartFunctions.RestartNumber <= 0)
         {
 
@@ -49,6 +58,13 @@ public class StartManager : MonoBehaviour
 
             if (CountDownManager.CountDownDone == true)
             {
+
+                //Enable Restaart
+                Gm.enabled = true;
+
+                //EnableWin
+                Lm.enabled = true;
+
 
                 //enable pausing
 
@@ -63,6 +79,9 @@ public class StartManager : MonoBehaviour
 
                 this.enabled = false;
 
+                //Enable Music
+                Mm.enabled = true;
+
             }
 
         }
@@ -70,7 +89,13 @@ public class StartManager : MonoBehaviour
         {
 
             CountDown.SetActive(false);
-            
+
+            //Enable Restaart
+            Gm.enabled = true;
+
+            //EnableWin
+            Lm.enabled = true;
+
             //enable pausing
 
             Pause.enabled = true;
@@ -79,6 +104,9 @@ public class StartManager : MonoBehaviour
 
             MoveForward.enabled = true;
             MoveHorizontal.enabled = true;
+
+            //Enable Music
+            Mm.enabled = true;
 
             //destroy count down and disable start manager
 

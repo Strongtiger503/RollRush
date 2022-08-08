@@ -39,6 +39,9 @@ public class RestartFunctions : MonoBehaviour
         //it increase the Reload Number
         RestartNumber = 0;
 
+        //ReloadTimer
+        TimeManager.time = 0;
+
         Invoke("RestartFunction", TimeBeforeReset);
 
     }

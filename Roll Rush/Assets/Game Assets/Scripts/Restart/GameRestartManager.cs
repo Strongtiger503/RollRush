@@ -32,6 +32,16 @@ public class GameRestartManager : MonoBehaviour
 
     private PauseGameOnKeyDown Pause;
 
+
+    [SerializeField]
+    MusicManager musicManager = null;
+    [SerializeField]
+    AudioSource Music = null;
+
+    [SerializeField]
+    AudioSource CollisionSound;
+
+
     #endregion
 
     #region Main
@@ -41,12 +51,32 @@ public class GameRestartManager : MonoBehaviour
     {
 
         RestartOnKeyDownScript = FindObjectOfType<RestartOnKeyDownModified>();
-        ExitOnKeyDownScript = FindObjectOfType<ExitOnKeyDown>();
-        
+        ExitOnKeyDownScript = FindObjectOfType<ExitOnKeyDown>();       
         Pause = FindObjectOfType<PauseGameOnKeyDown>();
+        Music = FindObjectOfType<StartManager>().gameObject.transform.GetChild(2).GetComponent<AudioSource>();
+        musicManager = FindObjectOfType<StartManager>().GetComponent<MusicManager>();
 
     }
 
+
+
+
+    void Update()
+    {
+
+   
+        //ReEnable Music
+
+        if ( RestartOnKeyDownScript.enabled && Input.GetKeyDown(RestartOnKeyDownScript.ResetButton))
+        {
+
+            Music.UnPause();
+
+        }
+
+        
+
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -58,9 +88,14 @@ public class GameRestartManager : MonoBehaviour
 
             //all need to be fast
 
-            #region Sound
+            #region Sound and Music
+
+            StartCoroutine(VolumeDecreaseSequence());
 
             //sound hit
+
+            CollisionSound.Play();
+
 
             #endregion
 
@@ -79,7 +114,7 @@ public class GameRestartManager : MonoBehaviour
 
             #endregion
 
-            #region Disable PauseFunction
+            #region Disable PauseFunction 
 
             Pause.enabled = false;
 
@@ -113,6 +148,25 @@ public class GameRestartManager : MonoBehaviour
         ExitOnKeyDownScript.enabled = true;
 
     }
+
+    IEnumerator VolumeDecreaseSequence()
+    {
+
+        Music.volume = 75;
+        Music.pitch = 0.9f;
+        yield return new WaitForSeconds(0.5f);
+        Music.volume = 50;
+        Music.pitch = 0.8f;
+        yield return new WaitForSeconds(0.2f);
+        Music.volume = 25;
+        Music.pitch = 0.7f;
+        //Save Music
+        musicManager.SaveMusic();
+        Music.Stop();
+
+
+    }
+
 
     #endregion
 
