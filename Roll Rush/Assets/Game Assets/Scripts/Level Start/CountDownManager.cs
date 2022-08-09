@@ -49,7 +49,7 @@ public class CountDownManager : MonoBehaviour
 
         //Do Counter
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(1f);
 
         //Enabling and disabling " 3 "
         three.SetActive(true);

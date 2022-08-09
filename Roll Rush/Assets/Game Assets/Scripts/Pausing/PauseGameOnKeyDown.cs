@@ -17,12 +17,25 @@ public class PauseGameOnKeyDown : MonoBehaviour
     [SerializeField]
     GameObject PauseMenu;
 
+    AudioSource Music;
+ 
+
     #endregion
 
     #region Main
 
+    void Start()
+    {
+
+        Music = FindObjectOfType<StartManager>().gameObject.transform.GetChild(2).GetComponent<AudioSource>();
+
+    }
+
     void Update()
     {
+
+
+
         if (Input.GetKeyDown(PauseKey) && isPaused == false)
         {
 
@@ -53,6 +66,9 @@ public class PauseGameOnKeyDown : MonoBehaviour
     public void Pause()
     {
 
+        //pause Music
+        Music.Pause();
+
         //pause game
         Time.timeScale = 0;
 
@@ -61,10 +77,14 @@ public class PauseGameOnKeyDown : MonoBehaviour
 
         isPaused = true;
 
+
     }
 
     public void UnPause()
     {
+
+        //pause Music
+        Music.UnPause();
 
         //unactivate pause menu
         StopCoroutine(PauseSequence());
