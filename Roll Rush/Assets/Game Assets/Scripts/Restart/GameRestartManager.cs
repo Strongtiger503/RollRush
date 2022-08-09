@@ -41,6 +41,9 @@ public class GameRestartManager : MonoBehaviour
     [SerializeField]
     AudioSource CollisionSound;
 
+    [SerializeField]
+    GameObject PauseButton;
+
 
     #endregion
 
@@ -117,6 +120,7 @@ public class GameRestartManager : MonoBehaviour
             #region Disable PauseFunction 
 
             Pause.enabled = false;
+            PauseButton.SetActive(false);
 
             #endregion
 

@@ -32,6 +32,12 @@ public class StartManager : MonoBehaviour
 
     #region Main
 
+    void Awake()
+    {
+
+        Application.targetFrameRate = 60;
+
+    }
 
     void Start()
     {
@@ -119,6 +125,7 @@ public class StartManager : MonoBehaviour
 
             //destroy count down and disable start manager
 
+            Time.timeScale = 1;
             Destroy(CountDown);
             this.enabled = false;
 

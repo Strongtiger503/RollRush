@@ -16,8 +16,10 @@ public class ExitOnKeyDown : MonoBehaviour
     float TimeBeforeExit = 0;
     [SerializeField]
     GameObject Trans;
+    MusicManager mm;
 
     public QuitExitFunctions Quit;
+    SwipeAndTapForMobileAndStandalone ss;
 
     #endregion
 
@@ -29,6 +31,8 @@ public class ExitOnKeyDown : MonoBehaviour
     {
 
         Quit = FindObjectOfType<QuitExitFunctions>();
+        mm = FindObjectOfType<MusicManager>();
+        ss = FindObjectOfType<SwipeAndTapForMobileAndStandalone>();
 
     }
 
@@ -38,11 +42,11 @@ public class ExitOnKeyDown : MonoBehaviour
 
         //When Exit Button is pressed 
 
-        if (Input.GetKey(ExitButton))
+        if (Input.GetKey(ExitButton) || ss.SwipeUp)
         {
 
             //Exit to Main Menu
-            
+            mm.ResetMusic();
             Quit.Exit(TimeBeforeExit);
             Trans.SetActive(true);
 

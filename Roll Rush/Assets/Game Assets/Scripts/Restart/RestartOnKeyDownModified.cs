@@ -19,6 +19,7 @@ public class RestartOnKeyDownModified : MonoBehaviour
     float TimeBeforeRestart = 0;
 
     public RestartFunctions Reset;
+    SwipeAndTapForMobileAndStandalone ss;
 
 
     #endregion
@@ -31,6 +32,7 @@ public class RestartOnKeyDownModified : MonoBehaviour
     {
 
         Reset = FindObjectOfType<RestartFunctions>();
+        ss = FindObjectOfType<SwipeAndTapForMobileAndStandalone>();
 
 
     }
@@ -41,7 +43,7 @@ public class RestartOnKeyDownModified : MonoBehaviour
 
         //When Restart Button is pressed 
 
-        if (Input.GetKey(ResetButton))
+        if (Input.GetKey(ResetButton) || ss.Tap)
         {
 
            //Restart

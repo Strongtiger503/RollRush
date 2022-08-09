@@ -98,7 +98,7 @@ public class SwipeAndTapForMobileAndStandalone : MonoBehaviour
 
 		#region If Deadzone was crossed do a swipe
 
-		if(swipeDelta.magnitude > 125)
+		if(swipeDelta.magnitude > 75)
 		{
 			//Direction of Swipe
 

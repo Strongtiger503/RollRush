@@ -63,6 +63,9 @@ public class LevelEndManager : MonoBehaviour
 
     public bool Win = false;
 
+    [SerializeField]
+    GameObject PauseButton;
+
     #endregion
 
 
@@ -89,6 +92,7 @@ public class LevelEndManager : MonoBehaviour
 
             //Disable Pause
             Pause.enabled = false;
+            PauseButton.SetActive(false);
 
             StartCoroutine(ActivateLevelCompleteSequence());
            
