@@ -11,6 +11,9 @@ public class QuitExitFunctions : MonoBehaviour
     [SerializeField]
     string MainMenuOrOther;
 
+    public static bool Playpressed = false;
+
+
     #endregion
 
     #region Functions

@@ -13,8 +13,8 @@ public class RestartOnKeyDownModified : MonoBehaviour
 
     #region Variables
 
-    [SerializeField]
-    KeyCode ResetButton = KeyCode.R;
+    public KeyCode ResetButton = KeyCode.R;
+
     [SerializeField]
     float TimeBeforeRestart = 0;
 
