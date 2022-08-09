@@ -117,11 +117,11 @@ public class TimeManager : MonoBehaviour
     IEnumerator StarSequence()
     {
 
-        yield return new WaitForSeconds(5.1f);
+        yield return new WaitForSeconds(5f);
 
         if (WinLevel >= 1) { Star1.SetActive(true); }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         
        if (WinLevel >= 2) { Star2.SetActive(true); }
 

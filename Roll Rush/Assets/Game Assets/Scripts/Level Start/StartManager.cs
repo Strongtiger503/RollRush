@@ -24,6 +24,9 @@ public class StartManager : MonoBehaviour
     MusicManager Mm;
 
     LevelEndManager Lm;
+    
+    [SerializeField]
+    GameObject Trans;
 
     #endregion
 
@@ -39,6 +42,12 @@ public class StartManager : MonoBehaviour
         Gm = FindObjectOfType<GameRestartManager>();
         Mm = FindObjectOfType<MusicManager>();
         Lm = FindObjectOfType<LevelEndManager>();
+
+        if (RestartFunctions.RestartNumber <= 0) 
+        {
+            Trans.SetActive(true);
+        }
+
     }
 
 
