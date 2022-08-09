@@ -32,7 +32,6 @@ public class MusicManager : MonoBehaviour
         _Music.pitch = MuInfo.pitch;
         _Music.loop = true;
         _Music.time = Music_Info.LatestTime;
-        Debug.Log(Music_Info.LatestTime + "Awake");
 
     }
 
@@ -41,20 +40,10 @@ public class MusicManager : MonoBehaviour
         _Music.Play();
     }
 
-
-    private void Update()
-    {
-
-        Debug.Log(_Music.time);
-
-    }
-
-
     public void SaveMusic()
     {
 
             Music_Info.LatestTime = _Music.time;
-            Debug.Log(Music_Info.LatestTime + "done");
 
     }
 

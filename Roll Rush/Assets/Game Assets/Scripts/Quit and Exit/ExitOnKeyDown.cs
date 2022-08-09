@@ -14,6 +14,8 @@ public class ExitOnKeyDown : MonoBehaviour
     KeyCode ExitButton = KeyCode.Q;
     [SerializeField]
     float TimeBeforeExit = 0;
+    [SerializeField]
+    GameObject Trans;
 
     public QuitExitFunctions Quit;
 
@@ -40,8 +42,9 @@ public class ExitOnKeyDown : MonoBehaviour
         {
 
             //Exit to Main Menu
-
+            
             Quit.Exit(TimeBeforeExit);
+            Trans.SetActive(true);
 
         }
 
