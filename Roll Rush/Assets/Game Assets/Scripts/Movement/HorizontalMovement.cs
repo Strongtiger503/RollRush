@@ -61,11 +61,13 @@ public class HorizontalMovement : MonoBehaviour
     [SerializeField]
     bool MoveLeftToMid = false;
 
+    SwipeAndTapForMobileAndStandalone st;
+
     #endregion
 
 
     #region Movement Force
-   
+
     //Horizontal Movement Force
     [SerializeField]
     float HorizontalForce = 40;
@@ -92,6 +94,7 @@ public class HorizontalMovement : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody>();
+        st = FindObjectOfType<StartManager>().gameObject.GetComponent<SwipeAndTapForMobileAndStandalone>();
 
     }
 
@@ -115,14 +118,14 @@ public class HorizontalMovement : MonoBehaviour
 
         //checking Input
 
-        if (Input.GetKeyDown(RightKey) && transform.position.x < PointLeftCheckArea.position.x && !MoveMidToLeft && !MoveLeftToMid && !MoveMidToRight )
+        if (st.SwipeRight && transform.position.x < PointLeftCheckArea.position.x && !MoveMidToLeft && !MoveLeftToMid && !MoveMidToRight )
         {
 
             MoveLeftToMid = true;
             animator.SetBool("MoveRight" , true);
 
         }
-        else if (Input.GetKeyDown(RightKey) && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x) && !MoveMidToLeft && !MoveLeftToMid && !MoveRightToMid )
+        else if (st.SwipeRight && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x) && !MoveMidToLeft && !MoveLeftToMid && !MoveRightToMid )
         {
 
             MoveMidToRight = true;
@@ -130,14 +133,14 @@ public class HorizontalMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(LeftKey) && transform.position.x > PointRightCheckArea.position.x && !MoveMidToRight && !MoveRightToMid && !MoveMidToLeft)
+        if (st.SwipeLeft && transform.position.x > PointRightCheckArea.position.x && !MoveMidToRight && !MoveRightToMid && !MoveMidToLeft)
         {
 
             MoveRightToMid = true;
             animator.SetBool("MoveLeft", true);
 
         }
-        else if (Input.GetKeyDown(LeftKey) && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x) && !MoveMidToRight && !MoveRightToMid && !MoveLeftToMid)
+        else if (st.SwipeLeft && (transform.position.x < PointRightCheckArea.position.x) && (transform.position.x > PointLeftCheckArea.position.x) && !MoveMidToRight && !MoveRightToMid && !MoveLeftToMid)
         {
 
             MoveMidToLeft = true;
